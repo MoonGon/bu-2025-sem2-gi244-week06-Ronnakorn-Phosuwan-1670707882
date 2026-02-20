@@ -10,7 +10,9 @@ public class PlayerControllerExam05 : MonoBehaviour
 
     // Exam 05 ...
     public int maxBulletCount = 10;
+    private int Bulle = 0;
     public float bulletRegenerateCooldown = 1f;
+    private float Re = 0f;
     // ...
 
     private float horizontalInput;
@@ -40,7 +42,23 @@ public class PlayerControllerExam05 : MonoBehaviour
 
         if (shootAction.triggered)
         {
-            Instantiate(projectilePrefab, transform.position, transform.rotation);
+            if(Bulle < maxBulletCount)
+            {
+                Instantiate(projectilePrefab, transform.position, transform.rotation);
+                Bulle++;
+            }
+
+            
+            
         }
+        if(Bulle == maxBulletCount)
+        {
+          Re = Time.time + 1f;
+          if(Re == bulletRegenerateCooldown)
+            {
+              Bulle = 0;
+            }
+        }
+
     }
 }

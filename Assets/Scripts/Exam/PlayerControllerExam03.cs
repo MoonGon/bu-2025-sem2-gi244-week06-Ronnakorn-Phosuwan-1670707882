@@ -8,7 +8,8 @@ public class PlayerControllerExam03 : MonoBehaviour
     public GameObject projectilePrefab;
 
     public bool enableAutoFireMode;
-    public float autoFireInterval = 0.1f;
+    public float autoFireInterval1 = 0.1f;
+    private float autoFireInterval = 0.1f;
 
     private float horizontalInput;
     private InputAction moveAction;
@@ -38,6 +39,15 @@ public class PlayerControllerExam03 : MonoBehaviour
         if (shootAction.triggered)
         {
             Instantiate(projectilePrefab, transform.position, transform.rotation);
+        }
+        if (enableAutoFireMode)
+        {
+            autoFireInterval -= Time.deltaTime;
+            if (autoFireInterval <= 0f)
+            {
+                Instantiate(projectilePrefab, transform.position, transform.rotation);
+                autoFireInterval = autoFireInterval1;
+            }
         }
     }
 }

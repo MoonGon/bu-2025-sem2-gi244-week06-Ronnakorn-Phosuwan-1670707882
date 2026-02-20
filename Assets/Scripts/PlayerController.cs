@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // [3] use input system to get horizontal input
-        horizontalInput = moveAction.ReadValue<Vector2>().x;
+        horizontalInput = moveAction.ReadValue<Vector2>().y;
 
         // [4] move the player
         transform.Translate(horizontalInput * speed * Time.deltaTime * Vector3.right);
