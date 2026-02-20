@@ -46,17 +46,22 @@ public class PlayerControllerExam05 : MonoBehaviour
             {
                 Instantiate(projectilePrefab, transform.position, transform.rotation);
                 Bulle++;
+                return;
             }
-
-            
             
         }
         if(Bulle == maxBulletCount)
         {
-          Re = Time.time + 1f;
-          if(Re == bulletRegenerateCooldown)
+            Re = Time.time;
+            
+            if (Re > 5)
             {
-              Bulle = 0;
+                Re = 0;
+            }
+          if(Re == 5)
+            {
+                Debug.Log("bbbbbbbbbb");
+                Bulle = 0;
             }
         }
 
